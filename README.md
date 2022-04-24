@@ -10,7 +10,8 @@ To create a maintainable application I have decided to create this app using the
  <div>
    <table width="50%" height="50%" align="center" valign="center">
    <tr><td>
-      <img src="https://user-images.githubusercontent.com/48664320/164951627-ed7ddb19-dee2-491f-ad08-eeda053cf3df.png" alt="Screen Shot 2022-04-24 at 11 20 15 am" />
+![image](https://user-images.githubusercontent.com/48664320/164951850-9ae1cad9-4dc2-4b4d-bbfd-0bfc432b7b62.png)
+
    </td></tr>
    </table>
 </div>
