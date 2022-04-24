@@ -8,7 +8,7 @@ To create a maintainable application I have decided to create this app using the
  
  
  <div>
-   <table width="100%" height="100%" align="center" valign="center">
+   <table width="50%" height="50%" align="center" valign="center">
    <tr><td>
       <img src="https://user-images.githubusercontent.com/48664320/164951627-ed7ddb19-dee2-491f-ad08-eeda053cf3df.png" alt="Screen Shot 2022-04-24 at 11 20 15 am" />
    </td></tr>
