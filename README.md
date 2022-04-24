@@ -6,7 +6,7 @@ Screen layout (InVision): <a href="https://app.diagrams.net">https://app.diagram
  
 To create a maintainable application I have decided to create this app using the architectural parent (MVVM - Model View ViewModel). This design architecture will allow me to create an app, that is extendable and extremely easy to maintain. This design pattern is fully supported and encouraged by google and includes all of their first party libraries. 
  
- <img width="530" alt="Screen Shot 2022-04-24 at 11 20 15 am" src="https://user-images.githubusercontent.com/48664320/164951627-ed7ddb19-dee2-491f-ad08-eeda053cf3df.png">
+ <img width="530" margin="auto" alt="Screen Shot 2022-04-24 at 11 20 15 am" src="https://user-images.githubusercontent.com/48664320/164951627-ed7ddb19-dee2-491f-ad08-eeda053cf3df.png">
  
  <ul>
   <li>Model</li>
