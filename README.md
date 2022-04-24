@@ -10,7 +10,8 @@ Screen layout (InVision): <a href="https://app.diagrams.net">https://app.diagram
 
 
 <h3>Network Architecture</h3>
- Currently there are 2 APIs serving the information required to display in app!
+ 
+Currently there are 2 APIs serving the information required to display in app!
 
 User Data: <a href="https://run.mocky.io/v3/c1819867-9260-4d1e-b9e1-3a77372c83df">https://run.mocky.io/v3/c1819867-9260-4d1e-b9e1-3a77372c83df</a>
 
