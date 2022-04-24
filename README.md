@@ -1,7 +1,4 @@
-# TheStarClub
- The Star Club App
- 
- <h1>Star Entertainment Group: The Star Club App- READ ME</h1>
+<h1>Star Entertainment Group: The Star Club App- READ ME</h1>
 
 Screen layout (InVision): <a href="https://app.diagrams.net">https://app.diagrams.net</a>
 
