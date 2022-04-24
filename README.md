@@ -4,6 +4,19 @@ Screen layout (InVision): <a href="https://app.diagrams.net">https://app.diagram
 
 <h3>Application Architecture<h3>
  
+To create a maintainable application I have decided to create this app using the architectural parent (MVVM - Model View ViewModel). This design architecture will allow me to create an app, that is extendable and extremely easy to maintain. This design pattern is fully supported and encouraged by google and includes all of their first party libraries. 
+ 
+ <img width="530" alt="Screen Shot 2022-04-24 at 11 20 15 am" src="https://user-images.githubusercontent.com/48664320/164951627-ed7ddb19-dee2-491f-ad08-eeda053cf3df.png">
+ 
+ <ul>
+  <li><b>Model</b></li>
+  
+  <li><b>View</b></li>
+  This is the part of the app which concerns each part of the app the the user interacts with. Views handle only the immediate interactions between users   and the app itself. So everything visible on the app will be displayed using views. Views will be straight forward and will not concern themselves with any business logic or data manipulations. 
+  
+  <li><b>ViewModel</b></li>
+  Most if not all of the view logic will be handled by the ViewModel. ViewModels will give views directions and instructions on what to display and govern most of the UI logic. ViewModels are the transmission lanes between the views and the business logic of our code they will grab data from the repositories and  transmit it over to the views to display. 
+</ul>
 
 <h3>Data Architecture</h3>
 
