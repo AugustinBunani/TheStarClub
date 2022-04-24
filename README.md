@@ -18,7 +18,9 @@ To create a maintainable application I have decided to create this app using the
  
  <ul>
   <li>Model</li>
-  
+ This is where all of our business related code will be stored. The model will act as the system to acquire data from our network / database. 
+ 
+ 
   <li>View</li>
   This is the part of the app which concerns each part of the app the the user interacts with. Views handle only the immediate interactions between users   and the app itself. So everything visible on the app will be displayed using views. Views will be straight forward and will not concern themselves with any business logic or data manipulations. 
   
@@ -29,7 +31,6 @@ To create a maintainable application I have decided to create this app using the
 <h3>Data Architecture</h3>
 
 
-
 <h3>Network Architecture</h3>
  
 Currently there are 2 APIs serving the information required to display in app!
@@ -37,7 +38,6 @@ Currently there are 2 APIs serving the information required to display in app!
 User Data: <a href="https://run.mocky.io/v3/c1819867-9260-4d1e-b9e1-3a77372c83df">https://run.mocky.io/v3/c1819867-9260-4d1e-b9e1-3a77372c83df</a>
 
 Benefits Data: <a href="https://run.mocky.io/v3/6bd03c3d-8b70-40fe-b26c-36bfc03296ff">https://run.mocky.io/v3/6bd03c3d-8b70-40fe-b26c-36bfc03296ff</a>
-
 
 Below are the sample of an GET request:
 
