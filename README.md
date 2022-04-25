@@ -49,38 +49,61 @@ Below are the sample of an GET request:
 
 <pre>
 <code>
-public void sampleMethod() {
-  HashMap requestBodyMap = new HashMap<>();
-  requestBodyMap.put("", );
-  
-  JsonObjectRequest requestObject = new JsonObjectRequest(Request.Method.GET, requestURL, new JSONObject(requestBodyMap),
-    new Response.Listener() {
-      @Override
-      public void onResponse(JSONObject responseObject) {
-        // ...
-        // Do something here
-        // ...
-        
-        // After finish, send the notification via EventBus by calling the following method
-        sendAPIResponseEvent(, , );
-      }
-    },
-    new Response.ErrorListener() {
-      @Override
-      public void onErrorResponse(VolleyError error) {
-        // Get server error message by calling getServerErrorResponse method  
-        String errorMessage = getServerErrorResponse(error);
-        
-        // Sending the notification to the caller
-        sendAPIResponseEvent(, , );
-      }
-  });
-  
-  requestObject.setTag();
-  
-  // Add to network queue
-  addToRequestQueue(requestObject);
-}
+
+ private void postDataUsingVolley(String name, String job) {
+        // url to post our data
+        String url = "";
+         
+        // creating a new variable for our request queue
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+         
+        // on below line we are calling a string
+        // request method to post the data to our API
+        // in this we are calling a post method.
+        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // inside on response method we are
+                // hiding our progress bar
+                // and setting data to edit text as empty
+                loadingPB.setVisibility(View.GONE);
+                nameEdt.setText("");
+                jobEdt.setText("");
+                 
+                // on below line we are displaying a success toast message.
+                Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+                try {
+                    // on below line we are parsing the response
+                    // to json object to extract data from it.
+                    JSONObject respObj = new JSONObject(response);
+                     
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // method to handle errors.
+                Toast.makeText(MainActivity.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                // below line we are creating a map for
+                // storing our values in key and value pair.
+                Map<String, String> params = new HashMap<String, String>();
+                
+                 
+                // at last we are
+                // returning our params.
+                return params;
+            }
+        };
+        // below line is to make
+        // a json object request.
+        queue.add(request);
+    }
 
 </code>
 
