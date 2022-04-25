@@ -17,14 +17,14 @@ To create a maintainable application I have decided to create this app using the
 </div>
  
  <ul>
-  <li>Model</li>
+ <li><b>Model</b></li>
  This is where all of our business related code will be stored. The model will act as the system to acquire data from our network / database. 
  
  
-  <li>View</li>
+ <li><b>View</b></li>
   This is the part of the app which concerns each part of the app the the user interacts with. Views handle only the immediate interactions between users   and the app itself. So everything visible on the app will be displayed using views. Views will be straight forward and will not concern themselves with any business logic or data manipulations. 
   
-  <li>ViewModel</li>
+ <li><b>ViewModel</b></li>
   Most if not all of the view logic will be handled by the ViewModel. ViewModels will give views directions and instructions on what to display and govern most of the UI logic. ViewModels are the transmission lanes between the views and the business logic of our code they will grab data from the repositories and  transmit it over to the views to display. 
 </ul>
 
@@ -39,10 +39,48 @@ User Data: <a href="https://run.mocky.io/v3/c1819867-9260-4d1e-b9e1-3a77372c83df
 
 Benefits Data: <a href="https://run.mocky.io/v3/6bd03c3d-8b70-40fe-b26c-36bfc03296ff">https://run.mocky.io/v3/6bd03c3d-8b70-40fe-b26c-36bfc03296ff</a>
 
+All network connection in this app is carried out using Volley inside API.kts class. It is important for all network operations to be executed in this class in order to be queued and handled properly.
+
+Unlike the database operations, all network operations are handled asynchronously and this app will use EventBus as well to inform the caller of the result.
+
+Volley is a third party application to handle network calls to fetch data from given APIs and will utilize Eventbus to inform us when data has been fetched and results are ready. We can use an Async funct to achieve the same outcome but for a more cleaner, maintainable, extendable and robust code Volley is the one of the best third party library to utilize here. 
+
 Below are the sample of an GET request:
 
 <pre>
 <code>
+public void sampleMethod() {
+  HashMap requestBodyMap = new HashMap<>();
+  requestBodyMap.put("", );
+  
+  JsonObjectRequest requestObject = new JsonObjectRequest(Request.Method.POST, requestURL, new JSONObject(requestBodyMap),
+    new Response.Listener() {
+      @Override
+      public void onResponse(JSONObject responseObject) {
+        // ...
+        // Do something here
+        // ...
+        
+        // After finish, send the notification via EventBus by calling the following method
+        sendAPIResponseEvent(, , );
+      }
+    },
+    new Response.ErrorListener() {
+      @Override
+      public void onErrorResponse(VolleyError error) {
+        // Get server error message by calling getServerErrorResponse method  
+        String errorMessage = getServerErrorResponse(error);
+        
+        // Sending the notification to the caller
+        sendAPIResponseEvent(, , );
+      }
+  });
+  
+  requestObject.setTag();
+  
+  // Add to network queue
+  addToRequestQueue(requestObject);
+}
 
 </code>
 
