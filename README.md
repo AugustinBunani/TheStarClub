@@ -53,7 +53,7 @@ public void sampleMethod() {
   HashMap requestBodyMap = new HashMap<>();
   requestBodyMap.put("", );
   
-  JsonObjectRequest requestObject = new JsonObjectRequest(Request.Method.POST, requestURL, new JSONObject(requestBodyMap),
+  JsonObjectRequest requestObject = new JsonObjectRequest(Request.Method.GET, requestURL, new JSONObject(requestBodyMap),
     new Response.Listener() {
       @Override
       public void onResponse(JSONObject responseObject) {
@@ -87,7 +87,9 @@ public void sampleMethod() {
 </pre>
 
 <h3>Libraries Used</h3>
-<ul>
 
+<ul>
+  <li>EventBus (v3.0.0) - <a href="https://github.com/greenrobot/EventBus">https://github.com/greenrobot/EventBus</a></li>
+  <li>Volley (v1.0.0) - <a href="https://developer.android.com/training/volley/index.html">https://developer.android.com/training/volley/index.html</a></li>
 </ul>
 
