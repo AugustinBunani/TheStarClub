@@ -38,6 +38,7 @@ import com.augustin.thestarclub.ui.theme.darkBlue
 import com.augustin.thestarclub.ui.theme.darkerBlue
 import com.augustin.thestarclub.ui.theme.lightBlue
 import com.augustin.thestarclub.utilities.Resource
+import com.augustin.thestarclub.viewmodel.UserBenefitsViewModel
 import com.augustin.thestarclub.viewmodel.UserDataViewModel
 import kotlinx.coroutines.launch
 
@@ -58,15 +59,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun VolleyRequestApi() {
-    val viewModel: UserDataViewModel = viewModel(
-        factory = UserDataViewModelFactory(userDataRepository = UserDataRepository())
+    val viewModel: UserBenefitsViewModel = viewModel(
+        factory = UserBenefitsViewModelFactory(userBenefitsRepository = UserBenefitsRepository())
     )
 
 
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val scaffoldState = rememberScaffoldState()
-    val getAllUserData = viewModel.getUserData.observeAsState()
+    val getAllUserData = viewModel.getBenefitsData.observeAsState()
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -106,7 +107,7 @@ fun VolleyRequestApi() {
                 }
 
                 scope.launch {
-                    val result = viewModel.getUserData(context)
+                    val result = viewModel.getBenefitsData(context)
 
                     if (result is Resource.Success) {
                         Toast.makeText(context, "Fetching data Success", Toast.LENGTH_SHORT).show()
@@ -128,17 +129,19 @@ fun VolleyRequestApi() {
                 }
 
                 if (viewModel.isLoading.value) {
-                    if (viewModel.getUserData.value != null) {
+                    if (viewModel.getBenefitsData.value != null) {
                         LazyColumn(
                             modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp)
                         ) {
                         }
 
-                        HandleUserDataTier(getAllUserData.value!!.tier, context)
-                        handleUserData(getAllUserData.value!!.name)
-                        handleUserData(getAllUserData.value!!.tierPoints)
-                        handleUserData(getAllUserData.value!!.casinoDollars)
+                        Toast.makeText(context, "Fetching data Success ${getAllUserData.value.toString()}", Toast.LENGTH_SHORT).show()
 
+
+//                        HandleUserDataTier(getAllUserData.value!!.tier, context)
+//                        handleUserData(getAllUserData.value!!.name)
+//                        handleUserData(getAllUserData.value!!.tierPoints)
+//                        handleUserData(getAllUserData.value!!.casinoDollars)
 
                     }
                 }
@@ -154,6 +157,7 @@ fun HandleUserDataTier(name: Any, context: Context) {
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
             .fillMaxWidth()
+            .height(140.dp)
             .clickable(
                 interactionSource = CreateMutableInteractionSource(),
                 indication = CreateIndication(),
@@ -221,6 +225,17 @@ class UserDataViewModelFactory(
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(UserDataViewModel::class.java)) {
             return UserDataViewModel(userDataRepository) as T
+        }
+        throw IllegalArgumentException("Unknown viewmodel class")
+    }
+}
+
+class UserBenefitsViewModelFactory(
+    private val userBenefitsRepository: UserBenefitsRepository
+) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(UserBenefitsViewModel::class.java)) {
+            return UserBenefitsViewModel(userBenefitsRepository) as T
         }
         throw IllegalArgumentException("Unknown viewmodel class")
     }

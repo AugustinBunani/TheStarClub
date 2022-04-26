@@ -7,6 +7,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.augustin.thestarclub.model.Benefit
+import com.augustin.thestarclub.model.BenefitX
 import com.augustin.thestarclub.utilities.Resource
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -17,9 +18,9 @@ import javax.inject.Inject
 @ActivityScoped
 class UserBenefitsRepository @Inject constructor() {
 
-    fun getBenefitsData(context: Context): MutableLiveData<Resource<List<Benefit>>>
+    fun getBenefitsData(context: Context): MutableLiveData<Resource<Benefit>>
     {
-        val _setUserBenefits: MutableLiveData<Resource<List<Benefit>>> = MutableLiveData<Resource<List<Benefit>>>()
+        val _setUserBenefits: MutableLiveData<Resource<Benefit>> = MutableLiveData<Resource<Benefit>>()
         val urlBenefits = "https://run.mocky.io/v3/6bd03c3d-8b70-40fe-b26c-36bfc03296ff"
         val gson = Gson()
 
@@ -30,9 +31,9 @@ class UserBenefitsRepository @Inject constructor() {
             val stringRequest = StringRequest(
                 Request.Method.GET, urlBenefits,
                 { response ->
-                    val responseValues: List<Benefit> = gson.fromJson(
+                    val responseValues: Benefit = gson.fromJson(
                         response,
-                        object : TypeToken<List<Benefit>>() {}.type
+                        object : TypeToken<Benefit>() {}.type
                     )
                     _setUserBenefits.postValue(Resource.Success(responseValues))
 

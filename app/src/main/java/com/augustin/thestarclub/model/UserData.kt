@@ -8,6 +8,5 @@ data class UserData(
     var tierPoints: Int,
     var casinoDollars: Int,
     var name: String,
-    var tier: String,
-    var benefits: List<Benefit>
+    var tier: String
 )

@@ -35,8 +35,6 @@ class UserDataRepository @Inject constructor() {
                         object : TypeToken<UserData>() {}.type
                     )
                     _setUserData.postValue(Resource.Success(responseValues))
-
-
                 }
             ){error ->
                 _setUserData.postValue(Resource.Error("An unkown error has occured: ${error.localizedMessage}"))
