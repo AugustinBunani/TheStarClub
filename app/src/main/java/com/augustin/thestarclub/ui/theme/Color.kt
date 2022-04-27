@@ -10,7 +10,11 @@ val Teal200 = Color(0xFF03DAC5)
 val red = Color(0xFFFF3B00)
 val yellow = Color(0xFFFFFF00)
 
+val white = Color(0xFFFFFFFF)
+
 val darkBlue = Color(0xFF213168)
 val lightBlue = Color(0xFF0E56C9)
 
-val darkerBlue = Color(0xFF001A5A)
+val darkerBlue = Color(0xFF000026)
+
+val midnightBlue = Color(0xFF4169E1)
