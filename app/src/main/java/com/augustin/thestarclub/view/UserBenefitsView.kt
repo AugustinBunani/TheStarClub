@@ -115,7 +115,7 @@ fun UserBenefitsView() {
                         ) {
                             items(getAllBenefitsData.value!!.benefits.size) { index ->
                                 HandleUserBenefitsData(
-                                    getAllBenefitsData.value!!.benefits[index], index, context
+                                    getAllBenefitsData.value!!.benefits[index], index
                                 )
                             }
                         }
@@ -127,7 +127,7 @@ fun UserBenefitsView() {
 }
 
 @Composable
-fun HandleUserBenefitsData(benefitX: BenefitX, index: Int, context: Context) {
+fun HandleUserBenefitsData(benefitX: BenefitX, index: Int) {
 
     Card(
         modifier = Modifier
@@ -151,7 +151,7 @@ fun HandleUserBenefitsData(benefitX: BenefitX, index: Int, context: Context) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .height(100.dp)
+                    .height(60.dp)
             ) {
                 Column(
                     modifier = Modifier
@@ -163,7 +163,9 @@ fun HandleUserBenefitsData(benefitX: BenefitX, index: Int, context: Context) {
                     Text(
                         textAlign = TextAlign.Start,
                         text = benefitX.name,
-                        style = MaterialTheme.typography.h6
+                        style = MaterialTheme.typography.subtitle1,
+                        fontWeight = FontWeight.Bold
+
                     )
                 }
 
@@ -177,7 +179,7 @@ fun HandleUserBenefitsData(benefitX: BenefitX, index: Int, context: Context) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .height(80.dp),
+                    .height(60.dp),
                 contentAlignment = Alignment.CenterEnd
             ) {
                 Column(
