@@ -48,9 +48,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             VolleyRequestTheme {
                 Surface(color = MaterialTheme.colors.background) {
-
                     VolleyRequestApi()
-
                 }
             }
         }
@@ -59,15 +57,19 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun VolleyRequestApi() {
-    val viewModel: UserBenefitsViewModel = viewModel(
-        factory = UserBenefitsViewModelFactory(userBenefitsRepository = UserBenefitsRepository())
+    val viewModel: UserDataViewModel = viewModel(
+        factory = UserDataViewModelFactory(userDataRepository = UserDataRepository())
     )
 
+    val viewBenefitsModel: UserBenefitsViewModel = viewModel(
+        factory = UserBenefitsViewModelFactory(userBenefitsRepository = UserBenefitsRepository())
+    )
 
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val scaffoldState = rememberScaffoldState()
-    val getAllUserData = viewModel.getBenefitsData.observeAsState()
+    val getAllUserData = viewModel.getUserData.observeAsState()
+    val getAllBenefitsData = viewBenefitsModel.getBenefitsData.observeAsState()
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -107,9 +109,10 @@ fun VolleyRequestApi() {
                 }
 
                 scope.launch {
-                    val result = viewModel.getBenefitsData(context)
+                    val result = viewModel.getUserData(context)
+                    val benefitsResult = viewBenefitsModel.getBenefitsData(context)
 
-                    if (result is Resource.Success) {
+                    if (result is Resource.Success && benefitsResult is Resource.Success) {
                         Toast.makeText(context, "Fetching data Success", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, result.message, Toast.LENGTH_SHORT).show()
@@ -117,7 +120,6 @@ fun VolleyRequestApi() {
 
                 }
 
-//
                 if (!viewModel.isLoading.value) {
                     Column(
                         modifier = Modifier.fillMaxSize(),
@@ -129,20 +131,17 @@ fun VolleyRequestApi() {
                 }
 
                 if (viewModel.isLoading.value) {
-                    if (viewModel.getBenefitsData.value != null) {
+                    if (viewModel.getUserData.value != null) {
                         LazyColumn(
                             modifier = Modifier.padding(top = 10.dp, start = 10.dp, end = 10.dp)
                         ) {
                         }
 
-                        Toast.makeText(context, "Fetching data Success ${getAllUserData.value.toString()}", Toast.LENGTH_SHORT).show()
-
-
-//                        HandleUserDataTier(getAllUserData.value!!.tier, context)
-//                        handleUserData(getAllUserData.value!!.name)
-//                        handleUserData(getAllUserData.value!!.tierPoints)
-//                        handleUserData(getAllUserData.value!!.casinoDollars)
-
+//                        Toast.makeText(context, "Fetching data Success ${getAllBenefitsData.value!!.benefits.get(0).expireDate}", Toast.LENGTH_SHORT).show()
+                        HandleUserDataTier(getAllUserData.value!!.tier, context)
+                        handleUserData(getAllUserData.value!!.name)
+                        handleUserData(getAllUserData.value!!.tierPoints)
+                        handleUserData(getAllUserData.value!!.casinoDollars)
                     }
                 }
             }

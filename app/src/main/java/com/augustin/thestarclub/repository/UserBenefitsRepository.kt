@@ -2,6 +2,7 @@ package com.augustin.thestarclub.repository
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -10,8 +11,10 @@ import com.augustin.thestarclub.model.Benefit
 import com.augustin.thestarclub.model.BenefitX
 import com.augustin.thestarclub.utilities.Resource
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.scopes.ActivityScoped
+import org.json.JSONArray
 import javax.inject.Inject
 
 
@@ -31,12 +34,12 @@ class UserBenefitsRepository @Inject constructor() {
             val stringRequest = StringRequest(
                 Request.Method.GET, urlBenefits,
                 { response ->
-                    val responseValues: Benefit = gson.fromJson(
+
+                    val responsObjectRequest: Benefit = gson.fromJson(
                         response,
                         object : TypeToken<Benefit>() {}.type
                     )
-                    _setUserBenefits.postValue(Resource.Success(responseValues))
-
+                    _setUserBenefits.postValue(Resource.Success(responsObjectRequest))
                 }
             ){error ->
                 _setUserBenefits.postValue(Resource.Error("An unkown error has occured: ${error.localizedMessage}"))
