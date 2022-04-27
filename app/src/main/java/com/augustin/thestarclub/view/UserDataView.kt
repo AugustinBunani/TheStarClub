@@ -335,7 +335,7 @@ fun handleUserStarGifts(navController: NavController) {
             Text(
                 textAlign = TextAlign.End,
                 text = "EXPLORE GIFTS YOU CAN EARN AT SILVER",
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.subtitle1
 
             )
         }
@@ -398,7 +398,6 @@ fun handleUserCasinoDollars(casinoDollars: Int, navController: NavController) {
 
             )
         }
-
 
         Spacer(
             modifier = Modifier

@@ -3,17 +3,13 @@ package com.augustin.thestarclub.view
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,6 +28,7 @@ import com.augustin.thestarclub.repository.UserBenefitsRepository
 import com.augustin.thestarclub.ui.theme.darkBlue
 import com.augustin.thestarclub.ui.theme.darkerBlue
 import com.augustin.thestarclub.ui.theme.lightBlue
+import com.augustin.thestarclub.ui.theme.red
 import com.augustin.thestarclub.utilities.Resource
 import com.augustin.thestarclub.viewmodel.UserBenefitsViewModel
 import kotlinx.coroutines.launch
@@ -75,7 +72,7 @@ fun UserBenefitsView() {
                         .padding(15.dp)
                 ) {
                     Text(
-                        text = "THE STAR CLUB 2",
+                        text = "Benefits",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
@@ -118,9 +115,7 @@ fun UserBenefitsView() {
                         ) {
                             items(getAllBenefitsData.value!!.benefits.size) { index ->
                                 HandleUserBenefitsData(
-                                    getAllBenefitsData.value!!.benefits[index],
-                                    index,
-                                    context
+                                    getAllBenefitsData.value!!.benefits[index], index, context
                                 )
                             }
                         }
@@ -138,42 +133,73 @@ fun HandleUserBenefitsData(benefitX: BenefitX, index: Int, context: Context) {
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
             .fillMaxWidth()
-            .height(140.dp)
-            .clickable(
-                interactionSource = CreateMutableInteractionSource(),
-                indication = CreateIndication(),
-                onClick = {
-                    Toast
-                        .makeText(context, "Benefits Idiot : ", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            ),
+            .padding(5.dp),
         elevation = 2.dp,
         backgroundColor = lightBlue,
         shape = RoundedCornerShape(corner = CornerSize(10.dp))
     ) {
-        Row {
-            Column(
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(5.dp)
+                .fillMaxWidth()
+        ) {
+
+            Box(
                 modifier = Modifier
-                    .padding(16.dp)
                     .fillMaxWidth()
-                    .align(Alignment.CenterVertically)
+                    .weight(1f)
+                    .height(100.dp)
             ) {
-                Text(text = benefitX.name, style = MaterialTheme.typography.h6)
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(start = 8.dp),
+                    verticalArrangement = Arrangement.aligned(Alignment.CenterVertically)
+                ) {
+
+                    Text(
+                        textAlign = TextAlign.Start,
+                        text = benefitX.name,
+                        style = MaterialTheme.typography.h6
+                    )
+                }
+
+            }
+            Spacer(
+                modifier = Modifier
+                    .width(20.dp)
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .height(80.dp),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(start = 8.dp),
+                    verticalArrangement = Arrangement.aligned(Alignment.CenterVertically)
+                ) {
+                    Text("Expire Date", fontWeight = FontWeight.Bold, color = red)
+
+                    Text(
+                        textAlign = TextAlign.End,
+                        text = benefitX.expireDate,
+                        style = MaterialTheme.typography.subtitle1
+
+                    )
+                }
             }
         }
     }
 }
 
-
-@Composable
-private fun CreateMutableInteractionSource(): MutableInteractionSource = remember {
-    MutableInteractionSource()
-}
-
-@Composable
-private fun CreateIndication(bounded: Boolean = true, color: Color = Color.Red) =
-    rememberRipple(bounded = bounded, color = color)
 
 class UserBenefitsViewModelFactory(
     private val userBenefitsRepository: UserBenefitsRepository
