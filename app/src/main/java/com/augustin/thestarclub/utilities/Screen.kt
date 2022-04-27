@@ -1,4 +1,4 @@
-package com.augustin.thestarclub
+package com.augustin.thestarclub.utilities
 
 sealed class Screen(val route: String)
 {

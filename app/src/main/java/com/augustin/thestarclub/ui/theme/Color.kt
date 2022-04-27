@@ -1,5 +1,7 @@
 package com.augustin.thestarclub.ui.theme
 
+import androidx.compose.foundation.background
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)
@@ -18,3 +20,4 @@ val lightBlue = Color(0xFF0E56C9)
 val darkerBlue = Color(0xFF000026)
 
 val midnightBlue = Color(0xFF4169E1)
+

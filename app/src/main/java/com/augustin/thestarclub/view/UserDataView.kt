@@ -2,7 +2,6 @@ package com.augustin.thestarclub.view
 
 import android.widget.Toast
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -31,7 +29,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.augustin.thestarclub.R
-import com.augustin.thestarclub.Screen
+import com.augustin.thestarclub.utilities.Screen
 import com.augustin.thestarclub.repository.UserDataRepository
 import com.augustin.thestarclub.ui.theme.*
 import com.augustin.thestarclub.utilities.Resource
@@ -67,13 +65,13 @@ fun UserDataView(navController: NavController) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(
-                                    darkBlue,
-                                    lightBlue
-                                )
-                            )
+                        .background(darkerBlue
+//                            brush = Brush.horizontalGradient(
+//                                colors = listOf(
+//                                    darkBlue,
+//                                    lightBlue
+//                                )
+//                            )
                         )
                         .padding(15.dp)
                 ) {
@@ -113,8 +111,8 @@ fun UserDataView(navController: NavController) {
                 if (viewModel.isLoading.value) {
                     if (viewModel.getUserData.value != null) {
                         LazyColumn(
-                            modifier = Modifier
-                                .padding(top = 10.dp, start = 10.dp, end = 10.dp)
+//                            modifier = Modifier
+//                                .padding(top = 10.dp, start = 10.dp, end = 10.dp)
 
                         ) {
 
@@ -138,8 +136,8 @@ fun handleUserDataName(name: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 16.dp, top = 16.dp, end = 16.dp),
-        backgroundColor = midnightBlue,
+            .padding(start = 0.dp, top = 0.dp, end = 0.dp),
+        backgroundColor = darkerBlue,
         shape = RoundedCornerShape(corner = CornerSize(10.dp)),
         elevation = 8.dp
     ) {

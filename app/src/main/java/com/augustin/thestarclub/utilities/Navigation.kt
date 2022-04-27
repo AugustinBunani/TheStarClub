@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.augustin.thestarclub.utilities.Screen
 import com.augustin.thestarclub.view.UserBenefitsView
 import com.augustin.thestarclub.view.UserDataView
 
