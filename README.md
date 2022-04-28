@@ -75,6 +75,9 @@ MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
 
 ![image](https://user-images.githubusercontent.com/48664320/165671189-858a8b61-2857-4685-ad92-520c41fc6b34.png)
 
+<h3>Documentation</h3>
+
+Under AppDocumentation Directory within this code there is a version control document titled - version_control_doc. Which contains a list of all major pulls / push and commit entries to this repository. 
 
 
 <h3>Libraries Used</h3>
