@@ -1,4 +1,10 @@
 ----------------------------
+version : 1.0.5,
+Schema : 1
+Coder : Gus
+Date : 27/04/2022
+Changes : Code completed, left screens extendable
+----------------------------
 version : 1.0.4,
 Schema : 1
 Coder : Gus

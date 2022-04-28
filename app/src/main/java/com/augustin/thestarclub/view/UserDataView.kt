@@ -60,19 +60,12 @@ fun UserDataView(navController: NavController) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.LightGray.copy(alpha = 0.2f))
+                    .background(darkerBlue)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(darkerBlue
-//                            brush = Brush.horizontalGradient(
-//                                colors = listOf(
-//                                    darkBlue,
-//                                    lightBlue
-//                                )
-//                            )
-                        )
+                        .background(darkerBlue)
                         .padding(15.dp)
                 ) {
                     Text(
@@ -111,17 +104,16 @@ fun UserDataView(navController: NavController) {
                 if (viewModel.isLoading.value) {
                     if (viewModel.getUserData.value != null) {
                         LazyColumn(
-//                            modifier = Modifier
-//                                .padding(top = 10.dp, start = 10.dp, end = 10.dp)
+                            modifier = Modifier
 
                         ) {
 
                         }
-                        handleUserDataName(getAllUserData.value!!.name)
-                        handleUserTier(getAllUserData.value!!.tier, navController)
-                        HandleUserTierData(getAllUserData.value!!.tierPoints)
-                        handleUserStarGifts(navController)
-                        handleUserCasinoDollars(getAllUserData.value!!.casinoDollars, navController)
+                        HandleUserDataName(getAllUserData.value!!.name)
+                        HandleUserTier(getAllUserData.value!!.tier, navController)
+                        HandleUserTierData(getAllUserData.value!!.tierPoints, navController)
+                        HandleUserStarGifts(navController)
+                        HandleUserCasinoDollars(getAllUserData.value!!.casinoDollars, navController)
 
                     }
                 }
@@ -130,8 +122,9 @@ fun UserDataView(navController: NavController) {
     }
 }
 
+
 @Composable
-fun handleUserDataName(name: String) {
+fun HandleUserDataName(name: String) {
 
     Card(
         modifier = Modifier
@@ -183,7 +176,7 @@ fun IconCard(icon: Int, padding: Dp) {
 }
 
 @Composable
-fun handleUserTier(name: Any, navController: NavController) {
+fun HandleUserTier(name: Any, navController: NavController) {
 
     Card(
         modifier = Modifier
@@ -202,11 +195,34 @@ fun handleUserTier(name: Any, navController: NavController) {
         shape = RoundedCornerShape(corner = CornerSize(10.dp))
 
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(start = 8.dp),
+            verticalArrangement = Arrangement.aligned(Alignment.CenterVertically)
+        ) {
 
+            Text(
+                textAlign = TextAlign.Start,
+                text = name.toString(),
+                style = MaterialTheme.typography.h6
+            )
+        }
 
         Box(
             contentAlignment = Alignment.CenterEnd
+
         ) {
+
+
+            Image(
+                painter = painterResource(R.drawable.diamond_card4),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(10.dp)
+                    .matchParentSize()
+            )
+
             Image(
                 painter = painterResource(R.drawable.ic_baseline_arrow_forward_ios_24),
                 contentDescription = null,
@@ -220,12 +236,19 @@ fun handleUserTier(name: Any, navController: NavController) {
 }
 
 @Composable
-fun HandleUserTierData(tierPoints: Int) {
+fun HandleUserTierData(tierPoints: Int, navController: NavController) {
 
     Card(
         modifier = Modifier
             .padding(start = 16.dp, top = 16.dp, end = 16.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable(
+                interactionSource = CreateMutableInteractionSource(),
+                indication = CreateIndication(),
+                onClick = {
+                    navController.navigate(Screen.UserTierPointScreen.withArgs("screen"))
+                }
+            ),
         elevation = 2.dp,
         backgroundColor = lightBlue,
         shape = RoundedCornerShape(corner = CornerSize(10.dp))
@@ -303,7 +326,7 @@ fun HandleUserTierData(tierPoints: Int) {
 }
 
 @Composable
-fun handleUserStarGifts(navController: NavController) {
+fun HandleUserStarGifts(navController: NavController) {
 
     Card(
         modifier = Modifier
@@ -314,7 +337,7 @@ fun handleUserStarGifts(navController: NavController) {
                 interactionSource = CreateMutableInteractionSource(),
                 indication = CreateIndication(),
                 onClick = {
-                    navController.navigate(Screen.DetailScreen.withArgs("screen"))
+                    navController.navigate(Screen.GiftsScreen.withArgs("screen"))
                 }
             ),
         elevation = 2.dp,
@@ -360,7 +383,7 @@ fun handleUserStarGifts(navController: NavController) {
 }
 
 @Composable
-fun handleUserCasinoDollars(casinoDollars: Int, navController: NavController) {
+fun HandleUserCasinoDollars(casinoDollars: Int, navController: NavController) {
 
     Card(
         modifier = Modifier
@@ -371,7 +394,7 @@ fun handleUserCasinoDollars(casinoDollars: Int, navController: NavController) {
                 interactionSource = CreateMutableInteractionSource(),
                 indication = CreateIndication(),
                 onClick = {
-                    navController.navigate(Screen.DetailScreen.withArgs("screen"))
+                    navController.navigate(Screen.CasinoDollarsScreen.withArgs("screen"))
                 }
             ),
         elevation = 2.dp,

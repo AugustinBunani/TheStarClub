@@ -8,8 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.augustin.thestarclub.utilities.Screen
-import com.augustin.thestarclub.view.UserBenefitsView
-import com.augustin.thestarclub.view.UserDataView
+import com.augustin.thestarclub.view.*
 
 @Composable
 fun Navigator() {
@@ -32,6 +31,49 @@ fun Navigator() {
         ) {
             DetailScreen()
         }
+
+        composable(
+            route = Screen.CasinoDollarsScreen.route + "/{name}",
+
+            arguments = listOf(
+                navArgument("name") {
+                    type = NavType.StringType
+                    defaultValue = "GUS"
+                    nullable = true
+                }
+            )
+        ) {
+            CasinoDollarsScreen()
+        }
+
+        composable(
+            route = Screen.GiftsScreen.route + "/{name}",
+
+            arguments = listOf(
+                navArgument("name") {
+                    type = NavType.StringType
+                    defaultValue = "GUS"
+                    nullable = true
+                }
+            )
+        ) {
+            GiftsScreen()
+        }
+
+        composable(
+            route = Screen.UserTierPointScreen.route + "/{name}",
+
+            arguments = listOf(
+                navArgument("name") {
+                    type = NavType.StringType
+                    defaultValue = "GUS"
+                    nullable = true
+                }
+            )
+        ) {
+            UserTierPointScreen()
+        }
+
     }
 }
 
@@ -44,5 +86,22 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun DetailScreen() {
     UserBenefitsView()
+
+}
+
+@Composable
+fun CasinoDollarsScreen() {
+    UserCasinoDollarsView()
+
+}
+
+@Composable
+fun GiftsScreen() {
+    UserGiftsView()
+
+}
+@Composable
+fun UserTierPointScreen() {
+    UserTierPointsView()
 
 }
