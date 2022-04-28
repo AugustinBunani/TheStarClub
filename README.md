@@ -69,6 +69,14 @@ MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
 
 </pre>
 
+<h3>UI and StoryCards</h3>
+
+![image](https://user-images.githubusercontent.com/48664320/165671137-a9aa29e0-926e-4032-ad66-e1af456a3fa4.png)
+
+![image](https://user-images.githubusercontent.com/48664320/165671189-858a8b61-2857-4685-ad92-520c41fc6b34.png)
+
+
+
 <h3>Libraries Used</h3>
 
 <ul>
