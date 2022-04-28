@@ -80,7 +80,7 @@ MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
 <h3>Libraries Used</h3>
 
 <ul>
-  <li>Compose - <a href="https://developer.android.com/jetpack/compose>https://developer.android.com/jetpack/compose/a></li>
+  <li>Compose - <a href="https://developer.android.com/jetpack/compos"e>https://developer.android.com/jetpack/compose</a></li>
   <li>Volley (v1.0.0) - <a href="https://developer.android.com/training/volley/index.html">https://developer.android.com/training/volley/index.html</a></li>
 </ul>
 
