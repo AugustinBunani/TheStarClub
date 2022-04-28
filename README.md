@@ -77,7 +77,7 @@ MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
 
 <h3>Documentation</h3>
 
-Under AppDocumentation Directory within this code there is a version control document titled - version_control_doc. Which contains a list of all major pulls / push and commit entries to this repository. 
+Under AppDocumentation Directory within this code there is a version control document  <a href="https://github.com/AugustinBunani/TheStarClub/blob/main/app/src/main/java/com/augustin/thestarclub/appdocumentation/version_control_doc">HERE</a>. Which contains a list of all major pulls / push and commit entries to this repository. 
 
 
 <h3>Libraries Used</h3>
