@@ -18,9 +18,13 @@ To create a maintainable application I have decided to create this app using the
  
  <ul>
  <li><b>Model</b></li>
- This is where all of our business related code will be stored. The model will act as the system to acquire data from our network / database. 
+ This is where all of our business related code will be stored. 
+ Models are used exclusively as our domain objects, to provide definitions and structure to the objects we need to fetch from the apis provided. 
  
+<li><b>Reporsitory</b></li>
+ Repositories here are used as the trafic lanes between the provided APIs and our data models - Domain Obects. 
  
+
  <li><b>View</b></li>
   This is the part of the app which concerns each part of the app the the user interacts with. Views handle only the immediate interactions between users   and the app itself. So everything visible on the app will be displayed using views. Views will be straight forward and will not concern themselves with any business logic or data manipulations. 
   
